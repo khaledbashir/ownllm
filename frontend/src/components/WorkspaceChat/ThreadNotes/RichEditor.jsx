@@ -8,6 +8,10 @@ import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
 import Typography from "@tiptap/extension-typography";
 import Highlight from "@tiptap/extension-highlight";
+import Table from "@tiptap/extension-table";
+import TableRow from "@tiptap/extension-table-row";
+import TableHeader from "@tiptap/extension-table-header";
+import TableCell from "@tiptap/extension-table-cell";
 import SlashCommand from "./SlashCommand";
 import debounce from "lodash.debounce";
 import {
@@ -69,6 +73,12 @@ export default function RichEditor({
             Highlight.configure({
                 multicolor: true,
             }),
+            Table.configure({
+                resizable: true,
+            }),
+            TableRow,
+            TableHeader,
+            TableCell,
             SlashCommand.configure({
                 onAICommand,
             }),
@@ -202,8 +212,8 @@ function FormatButton({ onClick, isActive, icon: Icon, title, className = "" }) 
             onClick={onClick}
             title={title}
             className={`p-1.5 rounded transition-colors ${isActive
-                    ? "bg-theme-sidebar-item-selected text-theme-text-primary"
-                    : "text-theme-text-secondary hover:bg-theme-sidebar-item-hover hover:text-theme-text-primary"
+                ? "bg-theme-sidebar-item-selected text-theme-text-primary"
+                : "text-theme-text-secondary hover:bg-theme-sidebar-item-hover hover:text-theme-text-primary"
                 } ${className}`}
         >
             <Icon size={16} weight={isActive ? "bold" : "regular"} />

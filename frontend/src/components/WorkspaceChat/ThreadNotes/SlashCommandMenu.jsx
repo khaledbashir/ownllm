@@ -79,6 +79,13 @@ export const SLASH_COMMANDS = [
         command: (editor) => editor.chain().focus().setHorizontalRule().run(),
     },
     {
+        title: "Table",
+        description: "Insert a simple table",
+        icon: Table,
+        command: (editor) =>
+            editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run(),
+    },
+    {
         title: "Ask AI",
         description: "Let AI help you write",
         icon: Sparkle,
@@ -138,14 +145,14 @@ const SlashCommandMenu = forwardRef(
                                 key={item.title}
                                 onClick={() => selectItem(index)}
                                 className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-left transition-colors ${index === selectedIndex
-                                        ? "bg-theme-sidebar-item-selected text-theme-text-primary"
-                                        : "text-theme-text-secondary hover:bg-theme-sidebar-item-hover"
+                                    ? "bg-theme-sidebar-item-selected text-theme-text-primary"
+                                    : "text-theme-text-secondary hover:bg-theme-sidebar-item-hover"
                                     }`}
                             >
                                 <div
                                     className={`w-10 h-10 rounded-lg flex items-center justify-center ${index === selectedIndex
-                                            ? "bg-theme-bg-primary"
-                                            : "bg-theme-bg-container"
+                                        ? "bg-theme-bg-primary"
+                                        : "bg-theme-bg-container"
                                         }`}
                                 >
                                     <Icon size={20} weight="bold" />
